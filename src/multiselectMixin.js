@@ -478,13 +478,19 @@ export default {
      * @returns {Object||String}
      */
     getOptionLabel (option) {
+      // console.log('getOptionLabel (option)', option)
       if (isEmpty(option)) return ''
       /* istanbul ignore else */
       if (option.isTag) return option.label
       /* istanbul ignore else */
       if (option.$isLabel) return option.$groupLabel
+      /* istanbul ignore else */
+      if (option.chk === true) {
+        // console.log('getOptionLabel (option)', 'checked')
+      }
 
       let label = this.customLabel(option, this.label)
+
       /* istanbul ignore else */
       if (isEmpty(label)) return ''
       return label
@@ -614,6 +620,7 @@ export default {
         ? this.valueKeys.indexOf(option[this.trackBy])
         : this.valueKeys.indexOf(option)
 
+      // option.chk = !option.chk
       this.$emit('remove', option, this.id)
       if (this.multiple) {
         const newValue = this.internalValue.slice(0, index).concat(this.internalValue.slice(index + 1))

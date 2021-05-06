@@ -7,6 +7,7 @@ div
     :searchable="false",
     :close-on-select="false",
     :show-labels="false"
+    :show-checkbox="false"
     placeholder="Pick a value"
   )
   pre.language-json
@@ -24,7 +25,7 @@ export default {
   data () {
     return {
       value: '',
-      options: ['Select option', 'options', 'selected', 'multiple', 'label', 'searchable', 'clearOnSelect', 'hideSelected', 'maxHeight', 'allowEmpty', 'showLabels', 'onChange', 'touched']
+      options: ['Select option', 'options', 'selected', 'multiple', 'label', 'searchable', 'clearOnSelect', 'hideSelected', 'maxHeight', 'allowEmpty', 'showLabels', 'showCheckbox', 'checkbox', 'onChange', 'touched']
     }
   }
 }

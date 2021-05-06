@@ -27,6 +27,7 @@
             <template v-for="(option, index) of visibleValues" @mousedown.prevent>
               <slot name="tag" :option="option" :search="search" :remove="removeElement">
                 <span class="multiselect__tag" :key="index">
+                  <!--input type="checkbox" id="test" value="Test"-->
                   <span v-text="getOptionLabel(option)"></span>
                   <i tabindex="1" @keypress.enter.prevent="removeElement(option)"  @mousedown.prevent="removeElement(option)" class="multiselect__tag-icon"></i>
                 </span>
@@ -119,6 +120,13 @@
                   :data-selected="selectedLabelText"
                   :data-deselect="deselectLabelText"
                   class="multiselect__option">
+                    <input
+                      v-if="(option && (option.chk === true || option.chk === false))"
+                      type="checkbox"
+                      id="test"
+                      v-model="option.chk"
+                      checked
+                    >
                     <slot name="option" :option="option" :search="search" :index="index">
                       <span>{{ getOptionLabel(option) }}</span>
                     </slot>
@@ -222,6 +230,15 @@ export default {
      * @type {Boolean}
      */
     showLabels: {
+      type: Boolean,
+      default: true
+    },
+    /**
+     * Decide whether to show pointer checkbox
+     * @default true
+     * @type {Boolean}
+     */
+    showCheckbox: {
       type: Boolean,
       default: true
     },
@@ -369,6 +386,10 @@ export default {
           : true)
       )
     }
+  },
+  mounted () {
+    // console.log('options', this.options)
+    // console.log('internalValue', this.internalValue)
   }
 }
 </script>

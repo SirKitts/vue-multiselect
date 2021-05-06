@@ -68,6 +68,8 @@ export default {
       /* istanbul ignore else */
       if (this.filteredOptions.length > 0) {
         this.select(this.filteredOptions[this.pointer], key)
+        // console.log(this.filteredOptions[this.pointer])
+        this.filteredOptions[this.pointer].chk = !this.filteredOptions[this.pointer].chk
       }
       this.pointerReset()
     },
